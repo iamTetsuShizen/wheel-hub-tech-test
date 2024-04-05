@@ -1,0 +1,41 @@
+@import "../../styles/base.scss";
+
+.header {
+    background-color: $green-color;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+
+    &__steps {
+      width: 220px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 0;
+      position: relative;
+    }
+
+    &__step {
+      display: inline-block;
+      color: red;
+    }
+
+    &__progressLine {
+      position: absolute;
+      z-index: -1;
+      height: 5px;
+      width: 100%;
+      background-color: $white;
+    }
+  }
+
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: $white;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

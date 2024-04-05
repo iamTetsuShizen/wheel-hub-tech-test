@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import WheelHubLogo from './assets/img/Logotipo-Vertical-Verde-Alta.png';
 import Img1 from './assets/img/screenshots/1.jpg';
@@ -11,11 +11,46 @@ import Img7 from './assets/img/screenshots/7.jpg';
 import Img8 from './assets/img/screenshots/8.jpg';
 
 import './App.scss';
+import Header from './components/Header';
 
-class App extends Component {
-  render(){
+export default function App () {
     return (
       <div className="app">
+        <main className="app-content vh-100">
+            <Header step={1}></Header>
+            <section className="app-form-container">
+                <div className="app-form-container__step1">
+                    <h1>Test Frontend Wheel Hub</h1>
+                    <img src={WheelHubLogo} className="app-header-logo" alt={"openbank-logo"} />
+                    <h6>¿Qué deberá realizar?</h6>
+                    <p>
+                        En la primera pestaña, deberá confirmar que es mayor de edad y que acepta el tratamiento de sus datos según la política de datos vigentes.
+                    </p>
+                    <p>
+                        En la segunda pestaña, deberá crear un usuario, una contraseña y una pista para recordar la contraseña (como dato opcional).
+                    </p>
+                    <p>
+                        En tercer lugar, deberá visualizarse el mensaje de éxito de creación.
+                    </p>
+
+                    <form>
+                        <label><input type="checkbox" id="stepOneCheckbox"/> Confirmo que es mayor de edad, y acepta el tratamiento de sus datos según al política de protección de datos vigente.</label>
+                    </form>
+
+                    <hr/>
+                    <button>Siguiente</button>
+                </div>
+                <div className="app-form-container__step2">
+
+                </div>
+                <div className="app-form-container__step3">
+
+                </div>
+            </section>
+        </main>
+
+        <hr></hr>
+
         <main className="app-content">
             <h1>Bienvenid@ al test de <img src={WheelHubLogo} className="app-header-logo" alt={"openbank-logo"} /></h1>
             <h3>Objetivo </h3>
@@ -92,8 +127,5 @@ class App extends Component {
             <h4 className='bye-bye'>Sin más que añadir, ¡mucha suerte! y cualquier duda, mandanos tus dudas al correo que te han dado. =)</h4>
         </main>
       </div>
-      )
-  }
+    )
 }
-
-export default App;
