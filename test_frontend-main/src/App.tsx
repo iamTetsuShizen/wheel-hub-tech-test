@@ -1,6 +1,7 @@
 import React from 'react';
 
 import WheelHubLogo from './assets/img/Logotipo-Vertical-Verde-Alta.png';
+import Success from './assets/img/success.png';
 import Img1 from './assets/img/screenshots/1.jpg';
 import Img2 from './assets/img/screenshots/2.jpg';
 import Img3 from './assets/img/screenshots/3.jpg';
@@ -41,10 +42,42 @@ export default function App () {
                     <button>Siguiente</button>
                 </div>
                 <div className="app-form-container__step2">
+                    <h1>Test Frontend Wheel Hub</h1>
 
+                    <form>
+                        <label htmlFor="username">Crea tu usuario</label>
+                        <input type="text" placeholder="Introduce tu usuario" id="username" required/>
+
+                        <div className="password-container">
+                            <label htmlFor="password">Crea tu contraseña</label>
+                            <input type="password" id="password" required/>
+
+                            <label htmlFor="confirmPassword">Repite tu contraseña</label>
+                            <input type="password" id="confirmPassword" required/>
+                        </div>
+                        <p>También puedes crear una pista que te ayude a recordar tu contraseña.</p>
+
+                        <label htmlFor="clue">Crea tu pista para recordar tu contraseña (opcional) <i className="info">i</i></label>
+                        <input type="text" placeholder="Introduce tu pista" id="clue" required/>
+                    </form>
+
+                    <hr/>
+
+                    <div className="controls">
+                        <button> Atras </button>
+                        <button> Siguiente </button>
+                    </div>
                 </div>
                 <div className="app-form-container__step3">
+                    <img src={Success} alt="success"></img>
+                    <h6>¡ La cuenta se creó correctamente!</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, magna quis scelerisque consectetur, libero enim sollicitudin dolor, at tincidunt eros quam laoreet dolor. Praesent facilisis justo erat, quis mollis sapien malesuada elementum. Cras et sem ut nibh ullamcorper euismod. Integer pretium suscipit eleifend. Donec consequat posuere leo, sed finibus leo egestas non. Donec ac arcu sed elit suscipit viverra.</p>
 
+                    <hr/>
+                    <div className="controls">
+                        <button> Atras </button>
+                        <button> Ir a inicio </button>
+                    </div>
                 </div>
             </section>
         </main>
