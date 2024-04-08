@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 
 import Img1 from './assets/img/screenshots/1.jpg';
@@ -11,67 +11,35 @@ import Img7 from './assets/img/screenshots/7.jpg';
 import Img8 from './assets/img/screenshots/8.jpg';
 
 
-import Header from './components/Header'; 
+import Header from './components/Header';
+
 import Input from './components/Input';
 import './App.scss';
 
-import WheelHubLogo from './assets/img/Logotipo-Vertical-Verde-Alta.png';
 import Success from './assets/img/success.png';
+import Control from './components/Control';
+import StepOne from './components/StepOne';
+import { Context } from './context';
+import StepTwo from './components/StepTwo';
 
 export default function App () {
-    const [step, setStep] = useState(1);
+    const {step, setStep} = useContext(Context);
 
     return (
       <div className="app">
         <main className="app-content vh-100">
-            <Header step={step}></Header>
+            <Header />
             <section className="widget">
+                
                 <div className={`widget__step ${step === 1 ? "active" : ""}`}>
-                    <h1 className="widget__step-title">Test Frontend Wheel Hub</h1>
-                    <hr className="widget__step-title-separator"/>
-                    <img src={WheelHubLogo} className="widget__step-logo" alt={"openbank-logo"} />
-                    <h6>¿Qué deberá realizar?</h6>
-                    <p>
-                        En la primera pestaña, deberá confirmar que es mayor de edad y que acepta el tratamiento de sus datos según la política de datos vigentes.
-                    </p>
-                    <p>
-                        En la segunda pestaña, deberá crear un usuario, una contraseña y una pista para recordar la contraseña (como dato opcional).
-                    </p>
-                    <p>
-                        En tercer lugar, deberá visualizarse el mensaje de éxito de creación.
-                    </p>
-                    <form className="widget__step-checkboxForm">
-                        <label><input type="checkbox" id="stepOneCheckbox" value="" /> Confirmo que es mayor de edad, y acepta el tratamiento de sus datos según al política de protección de datos vigente.</label>
-                    </form>
-
+                    <StepOne />
                     <hr/>
-                    <div className="controls">
-                        <button className="controls-previous"> Atras </button>
-                        <button className="controls-next"> Siguiente </button>
-                    </div>
+                    <Control />
                 </div>
-
                 <div className={`widget__step ${step === 2 ? "active" : ""}`}>
-                    <h1 className="widget__step-title">Test Frontend Wheel Hub</h1>
-                    <hr className="widget__step-title-separator"/>
-
-                    <form className="widget__step-form">
-                        <Input type="text" label="Crea tu usuario" placeholder="Introduce tu usuario" id="username" required></Input>
-
-                        <div className="widget__step-form__password-container">
-                            <Input type="password" label="Crea tu contraseña" placeholder="Crea tu contraseña" id="password" required></Input>
-                            <Input type="password" label="Repite tu contraseña" placeholder="Repite tu contraseña" id="confirmPassword" required></Input>
-                        </div>
-                        <p>También puedes crear una pista que te ayude a recordar tu contraseña.</p>
-                        <Input type="text" label="Crea tu pista para recordar tu contraseña (opcional)" placeholder="Introduce tu pista"  id="username" tooltip={<i className="info">i</i>} ></Input>
-                    </form>
-
+                    <StepTwo />
                     <hr/>
-
-                    <div className="controls">
-                        <button className="controls-previous"> Atras </button>
-                        <button className="controls-next"> Siguiente </button>
-                    </div>
+                    <Control />
                 </div>
                 <div className={`widget__step ${step === 3 ? "active" : ""}`}>
                     <div className='widget__step-success-container'>
@@ -83,10 +51,7 @@ export default function App () {
                     </div>
 
                     <hr/>
-                    <div className="controls">
-                        <button className="controls-previous"> Atras </button>
-                        <button className="controls-next"> Ir a Inicio </button>
-                    </div>
+                    <Control step={step} setStep={setStep} />
                 </div>
             </section>
         </main>

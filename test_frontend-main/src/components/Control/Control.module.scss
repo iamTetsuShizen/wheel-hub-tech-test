@@ -1,3 +1,36 @@
+@import "../../styles/base.scss";
+
 .control {
+    width: 100%;
+    padding: 10px 45px;
     
-}
+    button {
+        max-width: 150px;
+        padding: 8px 18px;
+    }
+
+    &__previous {
+        font-weight: 500;
+        border: none;
+        background-color: transparent;
+    }
+
+    &__next {
+        float: inline-end;
+        font-weight: 600;
+        border: none;
+        background-color: $dark-green-color;
+        color: $white;
+    }
+
+    &__next:disabled {
+        background-color: rgba($text-color, 0.3);
+    }
+
+    &__start {
+        float: inline-end;
+        font-weight: 600;
+        border: none;
+        background-color: transparent;
+    }
+  }

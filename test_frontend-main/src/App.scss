@@ -21,40 +21,6 @@
       
       padding: 40px 120px;
 
-
-      &-title {
-        font-size: 32px;
-        font-weight: 700;
-
-        &-separator {
-          max-width: 60px;
-          height: 4px;
-          background-color: $light-green-color;
-          margin: 0 0 30px 0;
-        }
-      }
-
-      &-logo {
-        max-width: 400px;
-        align-self: center;
-        margin: 15px;
-      }
-
-      &-checkboxForm {
-        margin-top: 20px;
-      }
-
-      &-form {
-        margin-bottom: 30px;
-
-        &__password-container {
-          display: flex;
-          justify-content: space-between;
-          gap: 60px;
-          margin-bottom: 30px;
-        }
-      }
-
       hr {
         width: 100%;
       }
@@ -83,39 +49,6 @@
       display: flex;
     }
 
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 45px;
-      
-      button {
-        max-width: 150px;
-        padding: 8px 18px;
-      }
-
-      &-previous {
-        font-weight: 500;
-        border: none;
-        background-color: transparent;
-      }
-
-      &-next {
-        font-weight: 600;
-        border: none;
-        background-color: $dark-green-color;
-        color: $white;
-      }
-
-      &-next:disabled {
-        background-color: rgba($text-color, 0.3);
-      }
-
-      &-start {
-        font-weight: 600;
-        border: none;
-        background-color: transparent;
-      }
-    }
   }
 
   .vh-100 {
@@ -135,11 +68,6 @@
   h4{
     color: $dark-green-color;
     font-weight: 700;
-  }
-
-  img {
-    max-width: 800px;
-    margin-bottom: 15px;
   }
 
 }
