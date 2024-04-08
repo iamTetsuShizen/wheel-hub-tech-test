@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import WheelHubLogo from './assets/img/Logotipo-Vertical-Verde-Alta.png';
-import Success from './assets/img/success.png';
+
 import Img1 from './assets/img/screenshots/1.jpg';
 import Img2 from './assets/img/screenshots/2.jpg';
 import Img3 from './assets/img/screenshots/3.jpg';
@@ -11,18 +10,26 @@ import Img6 from './assets/img/screenshots/6.jpg';
 import Img7 from './assets/img/screenshots/7.jpg';
 import Img8 from './assets/img/screenshots/8.jpg';
 
+
+import Header from './components/Header'; 
+import Input from './components/Input';
 import './App.scss';
-import Header from './components/Header';
+
+import WheelHubLogo from './assets/img/Logotipo-Vertical-Verde-Alta.png';
+import Success from './assets/img/success.png';
 
 export default function App () {
+    const [step, setStep] = useState(1);
+
     return (
       <div className="app">
         <main className="app-content vh-100">
-            <Header step={1}></Header>
-            <section className="app-form-container">
-                <div className="app-form-container__step1">
-                    <h1>Test Frontend Wheel Hub</h1>
-                    <img src={WheelHubLogo} className="app-header-logo" alt={"openbank-logo"} />
+            <Header step={step}></Header>
+            <section className="widget">
+                <div className={`widget__step ${step === 1 ? "active" : ""}`}>
+                    <h1 className="widget__step-title">Test Frontend Wheel Hub</h1>
+                    <hr className="widget__step-title-separator"/>
+                    <img src={WheelHubLogo} className="widget__step-logo" alt={"openbank-logo"} />
                     <h6>¿Qué deberá realizar?</h6>
                     <p>
                         En la primera pestaña, deberá confirmar que es mayor de edad y que acepta el tratamiento de sus datos según la política de datos vigentes.
@@ -33,64 +40,58 @@ export default function App () {
                     <p>
                         En tercer lugar, deberá visualizarse el mensaje de éxito de creación.
                     </p>
-
-                    <form>
-                        <label><input type="checkbox" id="stepOneCheckbox"/> Confirmo que es mayor de edad, y acepta el tratamiento de sus datos según al política de protección de datos vigente.</label>
+                    <form className="widget__step-checkboxForm">
+                        <label><input type="checkbox" id="stepOneCheckbox" value="" /> Confirmo que es mayor de edad, y acepta el tratamiento de sus datos según al política de protección de datos vigente.</label>
                     </form>
 
                     <hr/>
-                    <button>Siguiente</button>
-                </div>
-                <div className="app-form-container__step2">
-                    <h1>Test Frontend Wheel Hub</h1>
-
-                    <form>
-                        <label htmlFor="username">Crea tu usuario</label>
-                        <input type="text" placeholder="Introduce tu usuario" id="username" required/>
-
-                        <div className="password-container">
-                            <label htmlFor="password">Crea tu contraseña</label>
-                            <input type="password" id="password" required/>
-
-                            <label htmlFor="confirmPassword">Repite tu contraseña</label>
-                            <input type="password" id="confirmPassword" required/>
-                        </div>
-                        <p>También puedes crear una pista que te ayude a recordar tu contraseña.</p>
-
-                        <label htmlFor="clue">Crea tu pista para recordar tu contraseña (opcional) <i className="info">i</i></label>
-                        <input type="text" placeholder="Introduce tu pista" id="clue" required/>
-                    </form>
-
-                    <hr/>
-
                     <div className="controls">
-                        <button> Atras </button>
-                        <button> Siguiente </button>
+                        <button className="controls-previous"> Atras </button>
+                        <button className="controls-next"> Siguiente </button>
                     </div>
                 </div>
-                <div className="app-form-container__step3">
-                    <img src={Success} alt="success"></img>
-                    <h6>¡ La cuenta se creó correctamente!</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, magna quis scelerisque consectetur, libero enim sollicitudin dolor, at tincidunt eros quam laoreet dolor. Praesent facilisis justo erat, quis mollis sapien malesuada elementum. Cras et sem ut nibh ullamcorper euismod. Integer pretium suscipit eleifend. Donec consequat posuere leo, sed finibus leo egestas non. Donec ac arcu sed elit suscipit viverra.</p>
+
+                <div className={`widget__step ${step === 2 ? "active" : ""}`}>
+                    <h1 className="widget__step-title">Test Frontend Wheel Hub</h1>
+                    <hr className="widget__step-title-separator"/>
+
+                    <form className="widget__step-form">
+                        <Input type="text" label="Crea tu usuario" placeholder="Introduce tu usuario" id="username" required></Input>
+
+                        <div className="widget__step-form__password-container">
+                            <Input type="password" label="Crea tu contraseña" placeholder="Crea tu contraseña" id="password" required></Input>
+                            <Input type="password" label="Repite tu contraseña" placeholder="Repite tu contraseña" id="confirmPassword" required></Input>
+                        </div>
+                        <p>También puedes crear una pista que te ayude a recordar tu contraseña.</p>
+                        <Input type="text" label="Crea tu pista para recordar tu contraseña (opcional)" placeholder="Introduce tu pista"  id="username" tooltip={<i className="info">i</i>} ></Input>
+                    </form>
+
+                    <hr/>
+
+                    <div className="controls">
+                        <button className="controls-previous"> Atras </button>
+                        <button className="controls-next"> Siguiente </button>
+                    </div>
+                </div>
+                <div className={`widget__step ${step === 3 ? "active" : ""}`}>
+                    <div className='widget__step-success-container'>
+                        <img className="widget__step-success-img" src={Success} alt="success"></img>
+                        <div className='widget__step-success-text'>
+                            <h5>¡ La cuenta se creó correctamente!</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, magna quis scelerisque consectetur, libero enim sollicitudin dolor, at tincidunt eros quam laoreet dolor. Praesent facilisis justo erat, quis mollis sapien malesuada elementum. Cras et sem ut nibh ullamcorper euismod. Integer pretium suscipit eleifend. Donec consequat posuere leo, sed finibus leo egestas non. Donec ac arcu sed elit suscipit viverra.</p>
+                        </div>
+                    </div>
 
                     <hr/>
                     <div className="controls">
-                        <button> Atras </button>
-                        <button> Ir a inicio </button>
+                        <button className="controls-previous"> Atras </button>
+                        <button className="controls-next"> Ir a Inicio </button>
                     </div>
                 </div>
             </section>
         </main>
 
-        <hr></hr>
-
         <main className="app-content">
-            <h1>Bienvenid@ al test de <img src={WheelHubLogo} className="app-header-logo" alt={"openbank-logo"} /></h1>
-            <h3>Objetivo </h3>
-            <p>Lo que pretendemos con la prueba es evaluar las capacidades técnicas respecto a un/a desarrollador/a web o front, especialmente en el area de React y aplicaciones SPA. Con esta prueba se pretende valorar muchos aspectos del stack tecnológico del ámbito web, como arquitectura, uso de patrones de diseño, maquetación, técnicas de programación, conocimentos de Typescript, HTML y CSS, entre otros. </p>
-            <h3>¿En que consiste?</h3>
-            <p>La prueba consiste en diseñar, maquetar y desarrollar desde cero un pequeño wizard que simule la creación de un usuario y contraseña. Lo que queremos que hagas es que plantees un wizard de unos 3 pasos en los que una persona de su conformidad del tratamiento de sus datos, complete su usuario y contraseña através de un formulario, y una página final de feedback de la operación.</p>
-            <h3>Desarrollo</h3>
             <ul>
                 <li>
                     <h4>1º Pantalla inicial</h4>

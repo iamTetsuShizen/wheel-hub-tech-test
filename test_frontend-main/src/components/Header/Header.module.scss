@@ -1,7 +1,7 @@
 @import "../../styles/base.scss";
 
 .header {
-    background-color: $green-color;
+    background-color: $light-green-color;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -17,7 +17,10 @@
 
     &__step {
       display: inline-block;
-      color: red;
+      background-color: $step-color;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $white;
     }
 
     &__progressLine {
@@ -25,14 +28,15 @@
       z-index: -1;
       height: 5px;
       width: 100%;
-      background-color: $white;
+      background-color: $step-color;
     }
+
+    
   }
 
 .circle {
   width: 40px;
   height: 40px;
-  background-color: $white;
   border-radius: 50%;
 
   display: flex;

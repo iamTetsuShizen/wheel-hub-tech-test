@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import styles from './Header.module.scss';
 
 interface HeaderProps {
-    step: 1|2|3;
-  }
+    step: number;
+}
 
 const Header: FC<HeaderProps> =  ({ step }) => {
     return (

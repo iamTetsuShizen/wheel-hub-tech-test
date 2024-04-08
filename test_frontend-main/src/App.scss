@@ -1,14 +1,130 @@
 @import "styles/base";
+@import "styles/fonts";
 
 .app {
-  .app-content{
-    
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: $text-color;
+  }
+
+  p {
+    letter-spacing: 0.05rem;
+    margin-bottom: 20px;
+  }
+
+  .widget {
+
+    &__step {
+      display: none;
+
+      flex-direction: column;
+      
+      padding: 40px 120px;
+
+
+      &-title {
+        font-size: 32px;
+        font-weight: 700;
+
+        &-separator {
+          max-width: 60px;
+          height: 4px;
+          background-color: $light-green-color;
+          margin: 0 0 30px 0;
+        }
+      }
+
+      &-logo {
+        max-width: 400px;
+        align-self: center;
+        margin: 15px;
+      }
+
+      &-checkboxForm {
+        margin-top: 20px;
+      }
+
+      &-form {
+        margin-bottom: 30px;
+
+        &__password-container {
+          display: flex;
+          justify-content: space-between;
+          gap: 60px;
+          margin-bottom: 30px;
+        }
+      }
+
+      hr {
+        width: 100%;
+      }
+
+      &-success-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+
+      }
+
+      &-success-img {
+        max-width: 300px;
+      }
+
+      &-success-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+      }
+
+    }
+
+    .active {
+      display: flex;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 45px;
+      
+      button {
+        max-width: 150px;
+        padding: 8px 18px;
+      }
+
+      &-previous {
+        font-weight: 500;
+        border: none;
+        background-color: transparent;
+      }
+
+      &-next {
+        font-weight: 600;
+        border: none;
+        background-color: $dark-green-color;
+        color: $white;
+      }
+
+      &-next:disabled {
+        background-color: rgba($text-color, 0.3);
+      }
+
+      &-start {
+        font-weight: 600;
+        border: none;
+        background-color: transparent;
+      }
+    }
   }
 
   .vh-100 {
     height: calc(100vh - 25px);
   }
 
+  h6, h5 {
+    font-weight: bold;
+  }
 
   p{
     color: $text-color;
@@ -23,13 +139,7 @@
 
   img {
     max-width: 800px;
-    border: 1px solid $dark-green-color;
     margin-bottom: 15px;
-  }
-
-  .app-header-logo{
-    max-height: 80px;
-    border: none;
   }
 
 }
