@@ -1,8 +1,7 @@
 import React, { FC, createContext, useState } from 'react';
-import StepOne from '../components/StepOne';
 
 const initialState: ContextInterface = {
-    step: 1,
+    step: 2,
     setStep: () => {},
     validations: {
         stepOne: false,
@@ -15,6 +14,7 @@ interface ValidationInterface {
     stepOne: boolean;
     stepTwo: boolean;
 }
+
 
 interface ContextInterface {
     step: number;
@@ -29,6 +29,7 @@ const ContextProvider : FC = ({ children }) => {
     const [step, setStep] = useState<number>(initialState.step);
 
     const [validations, setValidations] = useState<ValidationInterface>(initialState.validations);
+
 
     return (
         <Context.Provider value={{

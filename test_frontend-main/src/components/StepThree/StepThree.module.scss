@@ -1,0 +1,18 @@
+@import "../../styles/base.scss";
+
+.stepThree {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    img {
+        max-width: 300px;
+    }
+
+    &__SuccessText {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+}

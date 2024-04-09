@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 
-
 import Img1 from './assets/img/screenshots/1.jpg';
 import Img2 from './assets/img/screenshots/2.jpg';
 import Img3 from './assets/img/screenshots/3.jpg';
@@ -10,17 +9,14 @@ import Img6 from './assets/img/screenshots/6.jpg';
 import Img7 from './assets/img/screenshots/7.jpg';
 import Img8 from './assets/img/screenshots/8.jpg';
 
+import './App.scss';
+import { Context } from './context';
 
 import Header from './components/Header';
-
-import Input from './components/Input';
-import './App.scss';
-
-import Success from './assets/img/success.png';
-import Control from './components/Control';
 import StepOne from './components/StepOne';
-import { Context } from './context';
 import StepTwo from './components/StepTwo';
+import StepThree from './components/StepThree';
+import Control from './components/Control';
 
 export default function App () {
     const {step, setStep} = useContext(Context);
@@ -30,7 +26,6 @@ export default function App () {
         <main className="app-content vh-100">
             <Header />
             <section className="widget">
-                
                 <div className={`widget__step ${step === 1 ? "active" : ""}`}>
                     <StepOne />
                     <hr/>
@@ -42,16 +37,9 @@ export default function App () {
                     <Control />
                 </div>
                 <div className={`widget__step ${step === 3 ? "active" : ""}`}>
-                    <div className='widget__step-success-container'>
-                        <img className="widget__step-success-img" src={Success} alt="success"></img>
-                        <div className='widget__step-success-text'>
-                            <h5>¡ La cuenta se creó correctamente!</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, magna quis scelerisque consectetur, libero enim sollicitudin dolor, at tincidunt eros quam laoreet dolor. Praesent facilisis justo erat, quis mollis sapien malesuada elementum. Cras et sem ut nibh ullamcorper euismod. Integer pretium suscipit eleifend. Donec consequat posuere leo, sed finibus leo egestas non. Donec ac arcu sed elit suscipit viverra.</p>
-                        </div>
-                    </div>
-
+                    <StepThree />
                     <hr/>
-                    <Control step={step} setStep={setStep} />
+                    <Control />
                 </div>
             </section>
         </main>

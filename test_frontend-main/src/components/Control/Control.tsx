@@ -1,5 +1,7 @@
 import React, { FC, useContext } from 'react';
 import styles from './Control.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Context } from '../../context';
 
 
@@ -38,8 +40,9 @@ const Control: FC = () => {
                     onClick={next}
                     className={styles.control__next}
                     disabled={isDisabled}
+
                 >
-                    Siguiente
+                    Siguiente <FontAwesomeIcon icon={faChevronRight} />
                 </button>}
 
             {step === 3 &&

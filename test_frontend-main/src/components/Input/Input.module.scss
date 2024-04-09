@@ -13,13 +13,27 @@
     }
 
     input {
+        border-radius: 3px;
         padding: 10px;
     }
 
     input[type="checkbox"] {
         margin-right: 10px;
     }
+
+    &__counter {
+        
+    }
     
+}
+
+.error , .error:focus{
+    border-color: $danger;
+}
+
+.error + span {
+    padding-left: 3px;
+    color: $danger;
 }
 
 .inline {

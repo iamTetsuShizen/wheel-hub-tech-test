@@ -18,31 +18,11 @@
       display: none;
 
       flex-direction: column;
-      
       padding: 40px 120px;
 
       hr {
         width: 100%;
       }
-
-      &-success-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 40px;
-
-      }
-
-      &-success-img {
-        max-width: 300px;
-      }
-
-      &-success-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-      }
-
     }
 
     .active {
