@@ -6,6 +6,8 @@ import  validateUsername from '../../helpers/usernameValidator';
 import  validatePassword  from '../../helpers/passwordValidator';
 import Input from '../Input';
 import ErrorInterface from '../../types/error';
+import { useTranslation } from 'react-i18next';
+
 
 interface InputValidationInterface {
     username: ErrorInterface;
@@ -15,6 +17,7 @@ interface InputValidationInterface {
 
 const StepTwo: FC = () => {
     const {validations, setValidations} = useContext(Context);
+    const {t} = useTranslation();
 
     const [inputValidations, setInputValidations] = useState<InputValidationInterface>({
         username: {
@@ -53,14 +56,14 @@ const StepTwo: FC = () => {
 
     return (
       <div className={styles.stepTwo}>
-        <h1 className={styles.stepTwo__Title}>Test Frontend Wheel Hub</h1>
+        <h1 className={styles.stepTwo__Title}>{t("appTitle")}</h1>
         <hr className={styles.stepTwo__Separator}/>
 
         <form>
             <Input
                 type="text"
-                label="Crea tu usuario"
-                placeholder="Introduce tu usuario"
+                label={t("createUsername")}
+                placeholder={t("addUser")}
                 id="username"
                 onChange={(value: string) => {
                     setUsername(value);
@@ -79,8 +82,8 @@ const StepTwo: FC = () => {
             <div className={styles.stepTwo__passwordContainer}>
                 <Input
                     type="password"
-                    label="Crea tu contraseña"
-                    placeholder="Crea tu contraseña"
+                    label={t("createPassword")}
+                    placeholder={t("addPassword")}
                     id="password"
                     onChange={(value: string) => {
                         setPassword(value);
@@ -97,14 +100,14 @@ const StepTwo: FC = () => {
                 />
                 <Input
                     type="password"
-                    label="Repite tu contraseña"
-                    placeholder="Repite tu contraseña"
+                    label={t("repeatPassword")}
+                    placeholder={t("repeatPassword")}
                     id="confirmPassword"
                     onChange={(value: string) => {
                         setConfirmPassword(value);
                         const isValid = {
                             isError:  password !== value,
-                            message:  password === value ? "" : "The passwords must be the same."
+                            message:  password === value ? "" : t("errorSamePasswords")
                         };
                         console.log(isValid);
                         setInputValidations((prev) => {
@@ -118,11 +121,11 @@ const StepTwo: FC = () => {
                     required
                 />
             </div>
-            <p>También puedes crear una pista que te ayude a recordar tu contraseña.</p>
+            <p>{t("canAddClueText")}</p>
             <Input 
                 type="text" 
-                label="Crea tu pista para recordar tu contraseña (opcional)"
-                placeholder="Introduce tu pista"
+                label={t("createClue")}
+                placeholder={t("addClue")}
                 tooltip={<i className="info align-self-right">i</i>} 
                 onChange={setClue}
                 maxlength="60"

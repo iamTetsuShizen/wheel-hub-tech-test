@@ -11,21 +11,21 @@ const validatePassword = (password: string) : ErrorInterface => {
     if (!isCorrectLength) {
         return {
             isError: true,
-            message: "The password has an incorrect length (from 8 to 24 letters)."
+            message: "errorPasswordLength"
         };
     }
 
     if(!containsNumber) {
         return {
             isError: true,
-            message: "The password has to have at least a number."
+            message: "errorPasswordMissingNumber"
         };
     }
 
     if(!containsUppercase) {
         return {
             isError: true,
-            message: "The password has to have at least a letter to be uppercase."
+            message: "errorPasswordMissingUppercase"
         };
     }
 

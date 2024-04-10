@@ -1,7 +1,7 @@
 import React, { FC, createContext, useState } from 'react';
 
 const initialState: ContextInterface = {
-    step: 2,
+    step: 1,
     setStep: () => {},
     validations: {
         stepOne: false,
@@ -14,7 +14,6 @@ interface ValidationInterface {
     stepOne: boolean;
     stepTwo: boolean;
 }
-
 
 interface ContextInterface {
     step: number;

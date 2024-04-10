@@ -5,6 +5,8 @@ import App from './App';
 import { ContextProvider } from './context';
 import * as serviceWorker from './serviceWorker';
 
+import './helpers/i18n';
+
 ReactDOM.render(
   <ContextProvider>
     <App />

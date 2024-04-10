@@ -2,9 +2,8 @@ import React, { FC, useContext } from 'react';
 import styles from './Header.module.scss';
 import { Context } from '../../context';
 
-
 const Header: FC = () => {
-
+    
     const {step} = useContext(Context);
 
     const stepStyles = [

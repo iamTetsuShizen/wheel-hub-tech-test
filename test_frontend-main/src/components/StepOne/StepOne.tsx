@@ -5,31 +5,26 @@ import { Context } from '../../context';
 import Input from '../Input';
 
 import WheelHubLogo from '../../assets/img/Logotipo-Vertical-Verde-Alta.png';
+import { useTranslation } from 'react-i18next';
 
 const StepOne: FC = () => {
+    const {t} = useTranslation();
     const {validations, setValidations} = useContext(Context);
-
 
     return (
        <div className={styles.stepOne}>
-            <h1 className={styles.stepOne__Title}>Test Frontend Wheel Hub</h1>
+            <h1 className={styles.stepOne__Title}>{t("appTitle")}</h1>
             <hr className={styles.stepOne__Separator}/>
-            <img src={WheelHubLogo} className={styles.stepOne__Logo} alt={"Wheel Hub logo"} />
-            <h6>¿Qué deberá realizar?</h6>
-            <p>
-                En la primera pestaña, deberá confirmar que es mayor de edad y que acepta el tratamiento de sus datos según la política de datos vigentes.
-            </p>
-            <p>
-                En la segunda pestaña, deberá crear un usuario, una contraseña y una pista para recordar la contraseña (como dato opcional).
-            </p>
-            <p>
-                En tercer lugar, deberá visualizarse el mensaje de éxito de creación.
-            </p>
+            <img src={WheelHubLogo} className={styles.stepOne__Logo} alt={t("logoAlt")} />
+            <h6>{t("whatToDo")}</h6>
+            <p>{t("firstStepFirstParagraph")}</p>
+            <p>{t("firstStepSecondParagraph")}</p>
+            <p>{t("firstStepThirdParagraph")}</p>
             <form >
                 <Input 
                 type="checkbox" 
                 id="stepOneCheckbox" 
-                label="Confirmo que es mayor de edad, y acepta el tratamiento de sus datos según al política de protección de datos vigente." 
+                label={t("ageConsent")} 
                 inverted 
                 inline
                 onClick={()=> {
