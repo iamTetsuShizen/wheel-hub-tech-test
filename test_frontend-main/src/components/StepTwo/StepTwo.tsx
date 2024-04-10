@@ -8,6 +8,8 @@ import Input from '../Input';
 import ErrorInterface from '../../types/error';
 import { useTranslation } from 'react-i18next';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 interface InputValidationInterface {
     username: ErrorInterface;
@@ -16,7 +18,7 @@ interface InputValidationInterface {
 }
 
 const StepTwo: FC = () => {
-    const {validations, setValidations} = useContext(Context);
+    const {validations, setValidations, user, setUser} = useContext(Context);
     const {t} = useTranslation();
 
     const [inputValidations, setInputValidations] = useState<InputValidationInterface>({
@@ -33,10 +35,6 @@ const StepTwo: FC = () => {
             message: ""
         }
     });
-    const [username, setUsername] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [confirmPassword, setConfirmPassword] = useState<string>("");
-    const [clue, setClue] = useState<string>("");
 
     useEffect(()=> {
         let isValid = true;
@@ -66,7 +64,10 @@ const StepTwo: FC = () => {
                 placeholder={t("addUser")}
                 id="username"
                 onChange={(value: string) => {
-                    setUsername(value);
+                    setUser({
+                        ...user,
+                        username: value
+                    });
                     const isValid = validateUsername(value);
                     setInputValidations((prev) => {
                         return {
@@ -86,7 +87,10 @@ const StepTwo: FC = () => {
                     placeholder={t("addPassword")}
                     id="password"
                     onChange={(value: string) => {
-                        setPassword(value);
+                        setUser({
+                            ...user,
+                            password: value
+                        });
                         const isValid = validatePassword(value);
                         setInputValidations((prev) => {
                             return {
@@ -104,10 +108,13 @@ const StepTwo: FC = () => {
                     placeholder={t("repeatPassword")}
                     id="confirmPassword"
                     onChange={(value: string) => {
-                        setConfirmPassword(value);
+                        setUser({
+                            ...user,
+                            confirmPassword: value
+                        });
                         const isValid = {
-                            isError:  password !== value,
-                            message:  password === value ? "" : t("errorSamePasswords")
+                            isError:  user.password !== value,
+                            message:  user.password === value ? "" : t("errorSamePasswords")
                         };
                         console.log(isValid);
                         setInputValidations((prev) => {
@@ -126,8 +133,13 @@ const StepTwo: FC = () => {
                 type="text" 
                 label={t("createClue")}
                 placeholder={t("addClue")}
-                tooltip={<i className="info align-self-right">i</i>} 
-                onChange={setClue}
+                tooltip={<FontAwesomeIcon icon={faCircleInfo} transform=" right-20 down-1" className="infoIcon"/>} 
+                onChange={(value: string) => {
+                    setUser({
+                        ...user,
+                        clue: value
+                    });
+                }}
                 maxlength="60"
             />
         </form>
