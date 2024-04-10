@@ -15,11 +15,6 @@ db.serialize(() => {
     db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT)');
 });
 
-// Home Page
-app.get( "/", ( req: any, res: any ) => {
-    res.send( "Hello world!" );
-} );
-
 // API
 app.post('/api/users', ( req: any, res: any ) => {
     const { username, password } = req.body;

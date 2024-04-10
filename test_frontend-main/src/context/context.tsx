@@ -2,7 +2,7 @@ import React, { FC, createContext, useState } from 'react';
 import UserInterface from '../types/user';
 
 const initialState: ContextInterface = {
-    step: 2,
+    step: 1,
     setStep: () => {},
     validations: {
         stepOne: false,
