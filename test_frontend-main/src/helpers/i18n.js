@@ -29,12 +29,12 @@ i18next
                     success: "Success",
                     accountCreated: "¡La cuenta se creó correctamente!",
                     stepThreeLipsum: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, magna quis scelerisque consectetur, libero enim sollicitudin dolor, at tincidunt eros quam laoreet dolor. Praesent facilisis justo erat, quis mollis sapien malesuada elementum. Cras et sem ut nibh ullamcorper euismod. Integer pretium suscipit eleifend. Donec consequat posuere leo, sed finibus leo egestas non. Donec ac arcu sed elit suscipit viverra.",
-                    errorSamePasswords: "The passwords must be the same.",
-                    errorUsernameLength: "The username has an incorrect length (from 5 to 25 letters).",
-                    errorUsernameStartWithNumber: "The username cannot start with a number.",
-                    errorPasswordLength: "The password has an incorrect length (from 8 to 24 letters).",
-                    errorPasswordMissingNumber: "The password has to have at least a number.",
-                    errorPasswordMissingUppercase: "The password has to have at least a letter to be uppercase.",
+                    errorSamePasswords: "Las contraseñas deben coincidir.",
+                    errorUsernameLength: "El nombre de usuario deberia tener entre 5 a 25 letras.",
+                    errorUsernameStartWithNumber: "El nombre de usuario no puede empezar con un número.",
+                    errorPasswordLength: "La contraseña debe tener de 8 a 24 caracteres.",
+                    errorPasswordMissingNumber: "La contraseña debe tener al menos un numero.",
+                    errorPasswordMissingUppercase: "La contraseña debe tener al menos una mayúscula.",
                 }
             },
             en: {

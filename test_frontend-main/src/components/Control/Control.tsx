@@ -8,16 +8,14 @@ import ErrorInterface from '../../types/error';
 
 const registerUser = async (user: UserInterface) : Promise<ErrorInterface> => {
 
-    // comprova contrassenyes, or error
     if (user.password !== user.confirmPassword) {
         return {
             isError: true,
             message: "Make sure the password and the confirmPasword fields are equal"
         }
     }
-
-    //fetch
-    const url = 'test';
+    
+    const url = 'http://localhost:8080/api/users';
 
     const response = await fetch(url, {
         method: "POST",
@@ -25,15 +23,12 @@ const registerUser = async (user: UserInterface) : Promise<ErrorInterface> => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(user)
-      });
-
-    // check resposta, enviar error o 
+    });
     
-    //await response.json();
-
+    // check resposta, enviar error o 
     console.log(response);
-
-    if (response.status !== 200) {
+    //await response.json();
+    if (!response.ok) {
         return {
             isError: true,
             message: "Something went wrong"
@@ -42,7 +37,7 @@ const registerUser = async (user: UserInterface) : Promise<ErrorInterface> => {
 
     return {
         isError: false,
-        message: ""
+        message: "test" // we'll put the message comming from the back
     }
 }
 
