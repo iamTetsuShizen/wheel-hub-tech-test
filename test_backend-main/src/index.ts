@@ -1,57 +1,71 @@
+import 'reflect-metadata';
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const sqlite3 = require('sqlite3').verbose();
+const { createHash } = require('node:crypto');
+
+import { DataSource } from "typeorm";
+import { User } from './entity/User';
+
+const AppDataSource = new DataSource({
+    type: "sqlite",
+    database: "./data/wheelhub.db",
+    synchronize: true,
+    logging: true,
+    entities: [User],
+    subscribers: [],
+    migrations: [],
+});
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const port = 8080;
+AppDataSource.initialize()
+    .then( async () => {
+        //API endpoint
+        app.post('/api/users', async ( req: any, res: any ) => {
+            // info for the test purposes: this deconstruction already takes out from the body irrelevant info
+            const { username, password } = req.body;
 
-const db =  new sqlite3.Database(':memory:');
-
-db.serialize(() => {
-    db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT)');
-});
-
-// API
-app.post('/api/users', ( req: any, res: any ) => {
-    const { username, password } = req.body;
-
-    if (!username || !password) {
-        return res.status(400).json({ 
-            message: 'Username and password are required.'
-        });
-    }
-
-    db.get('SELECT * FROM users WHERE username = ?', [username], (err: any, row: any) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({ message: 'Internal Server Error' });
-        }
-
-        if (row) {
-            return res.status(400).json({ message: 'Username already exists. Please choose a different one.' });
-        }
-
-        db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, password], function(err: any) {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ message: 'Internal Server Error' });
+            if (!username || !password) {
+                return res.status(400).json({ 
+                    message: 'Username and password are required.'
+                });
             }
+            //check if that name already exists
+            const userRepository = AppDataSource.getRepository(User);
+            const userFind = await userRepository.findBy({
+                username: username
+            });
+            console.log(userFind);
+
+            if (userFind.length > 0) {
+                return res.status(400).json({ 
+                    message: 'Username already exists. Please choose a different one.'
+                });
+            }
+
+            // If not, we create it
+            const newUser = new User();
+            newUser.username = username;
+            newUser.password = createHash('sha256').update(password).digest('hex');
+
+            userRepository.save(newUser);
 
             res.status(201).json({
                 status: 200,
                 message: "El usuario se creó correctamente"
             });
         });
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization", err);
     });
 
 
-});
-
 // start the Express server
-app.listen( port, () => {
-    console.log( `server started at http://localhost:${ port }` );
+const PORT = 8080;
+app.listen( PORT, () => {
+    console.log( `server started at http://localhost:${ PORT }` );
 } );
